@@ -5,7 +5,7 @@ from datetime import datetime
 # Stiahnutie adresara z Pohody
 xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <dat:dataPack id="001" ico={config.ico} application="TestAD" version = "2.0" note="Export"
- xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"  
+ xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
  xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
  xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
  xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd"
@@ -96,7 +96,7 @@ for company in companies:
                                                 <inv:invoiceItem>
         			                                <inv:text>{list_all[n][1]}</inv:text>
         			                                <inv:quantity>{list_all[n][3]}</inv:quantity>
-                                                    <inv:rateVAT>high</inv:rateVAT>
+                                                    <inv:rateVAT>{list_all[n][5]}</inv:rateVAT>
         			                                <inv:homeCurrency>
         			                                <typ:unitPrice>{list_all[n][2]}</typ:unitPrice>
         			                                </inv:homeCurrency>
