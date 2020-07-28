@@ -1,7 +1,7 @@
 import gspread, requests, xmltodict, config
 from datetime import datetime
 
-### Pohoda XML
+# Pohoda XML
 # Stiahnutie adresara z Pohody
 xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <dat:dataPack id="001" ico={config.ico} application="TestAD" version = "2.0" note="Export"
@@ -38,7 +38,7 @@ while i < len(address_book):
 
 today_date = datetime.today().strftime('%Y-%m-%d') #Datum vystavenia faktury
 
-### Google Sheets
+# Google Sheets
 # vsetky data o klientoch su ulozene v Google Sheets
 
 gc = gspread.service_account(filename='service_account.json') #Autorizacny subor
@@ -55,7 +55,7 @@ xml_header = f"""<?xml version="1.0" encoding="UTF-8"?>
 <dat:dataPack id="fa002" ico={config.ico} application="StwTest" version="2.0" note="Import FA" xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd" xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd">"""
 xml_file.write(xml_header)
 
-### magic ball
+# parovanie firiem, vyber poloziek na fakturu
 for company in companies:
     for pohoda_uid, pohoda_company in adresar.items():
         if company == pohoda_company:
@@ -85,7 +85,6 @@ for company in companies:
                                                 <inv:account>
                                                     <typ:ids>FIO</typ:ids>
                                                 </inv:account>
-                                                <inv:intNote>XML Import</inv:intNote>
                                             </inv:invoiceHeader>
 	                                        <inv:invoiceDetail>"""
                     xml_file.write(xml_invoice)
@@ -96,7 +95,7 @@ for company in companies:
                                                 <inv:invoiceItem>
         			                                <inv:text>{list_all[n][1]}</inv:text>
         			                                <inv:quantity>{list_all[n][3]}</inv:quantity>
-                                                    <inv:rateVAT>{list_all[n][5]}</inv:rateVAT>
+                                                    <inv:rateVAT>high</inv:rateVAT>
         			                                <inv:homeCurrency>
         			                                <typ:unitPrice>{list_all[n][2]}</typ:unitPrice>
         			                                </inv:homeCurrency>
@@ -119,12 +118,12 @@ xml_header_end = f"""
 xml_file.write(xml_header_end)
 xml_file.close()
 
-### Posli vygenerovane XML na Pohoda API
+# Posli vygenerovane XML na Pohoda API
 xml_data = open('pohoda.xml', 'rb')
 send_api_request = requests.post(config.api_url, data=xml_data, headers=headers).content
 xml_data.close()
 
-### Zapis odpoved z API do debug.log
+# Zapis odpoved z API do debug.log
 api_response = open("debug.log", "wb")
 api_response.write(send_api_request)
 api_response.close()

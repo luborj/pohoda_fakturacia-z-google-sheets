@@ -24,10 +24,10 @@ Script komunikuje s Pohodou prostredníctvom služby [Pohoda mServer](https://ww
 
 `api_url` Adresa Pohoda mServer vo formáte http://IP:port/xml
 
-`ico = '\"123\"'` IČO účtovnej jednotky
+`ico = "123"` IČO účtovnej jednotky
 
 `authorization` V hlavičke HTTP požiadavky je potrebné uviesť parameter [STW-Authorization](https://www.stormware.sk/prirucka-pohoda-online/Datova_komunikacia/POHODA_mServer_/), ktorý slúži na autentizáciu do programu. Jedná sa o zakódovaný reťazec meno:heslo do Base64.
 
 `file_name = 'filename'`
 
-`sheet_name = "sheetname"` 
+`sheet_name = "sheetname"`
