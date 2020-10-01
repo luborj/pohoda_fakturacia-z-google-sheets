@@ -36,7 +36,7 @@ while i < len(address_book):
       adresar.update({company_id : company_name})
       i += 1
 
-today_date = datetime.today().strftime('%Y-%m-%d') #Datum vystavenia faktury
+today_date = datetime.today().strftime('%Y-%m-%d') # Datum vystavenia faktury
 
 # Google Sheets
 # vsetky data o klientoch su ulozene v Google Sheets
@@ -53,6 +53,7 @@ len_loop = len(sh.col_values(3)) #Vsetky texty fakturacie
 xml_file = open("pohoda.xml", "w")
 xml_header = f"""<?xml version="1.0" encoding="UTF-8"?>
 <dat:dataPack id="fa002" ico={config.ico} application="StwTest" version="2.0" note="Import FA" xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd" xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd">"""
+
 xml_file.write(xml_header)
 
 # parovanie firiem, vyber poloziek na fakturu
