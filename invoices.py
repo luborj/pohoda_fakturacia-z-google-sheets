@@ -4,7 +4,7 @@ from datetime import datetime
 # Pohoda XML
 # Stiahnutie adresara z Pohody
 xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<dat:dataPack id="001" ico={config.ico} application="TestAD" version = "2.0" note="Export"
+<dat:dataPack id="001" ico="{config.ico}" application="TestAD" version = "2.0" note="Export"
  xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd"
  xmlns:lAdb="http://www.stormware.cz/schema/version_2/list_addBook.xsd"
  xmlns:ftr="http://www.stormware.cz/schema/version_2/filter.xsd"
@@ -52,7 +52,7 @@ len_loop = len(sh.col_values(3)) #Vsetky texty fakturacie
 ### pohoda.xml
 xml_file = open("pohoda.xml", "w")
 xml_header = f"""<?xml version="1.0" encoding="UTF-8"?>
-<dat:dataPack id="fa002" ico={config.ico} application="StwTest" version="2.0" note="Import FA" xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd" xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd">"""
+<dat:dataPack id="fa002" ico="{config.ico}" application="StwTest" version="2.0" note="Import FA" xmlns:dat="http://www.stormware.cz/schema/version_2/data.xsd" xmlns:inv="http://www.stormware.cz/schema/version_2/invoice.xsd" xmlns:typ="http://www.stormware.cz/schema/version_2/type.xsd">"""
 
 xml_file.write(xml_header)
 
