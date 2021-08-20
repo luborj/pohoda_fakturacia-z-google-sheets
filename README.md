@@ -5,6 +5,7 @@ Tento skript umožňuje generovať faktúry z Google Sheets.
 ## Google Sheets
 
 Pre prístup do Google Sheets je potrebné mať vytvorený [API prístup](https://console.cloud.google.com/apis/). Následne súbor `service_account.json` umiestnite do adresára so skriptom.
+Firma alebo fyzická osoba musí byť uložená aj v adresári Pohody. Následne sa na faktúru z adresára prenesú potrebné údaje (adresa, IČO, e-mail, atď.).
 
 Štruktúra tabuľky Google Sheets je následovná:
 
@@ -24,10 +25,10 @@ Script komunikuje s Pohodou prostredníctvom služby [Pohoda mServer](https://ww
 
 `api_url` Adresa Pohoda mServer vo formáte http://IP:port/xml
 
-`ico = "123"` IČO účtovnej jednotky
+`ico = '123'` IČO účtovnej jednotky
 
 `authorization` V hlavičke HTTP požiadavky je potrebné uviesť parameter [STW-Authorization](https://www.stormware.sk/prirucka-pohoda-online/Datova_komunikacia/POHODA_mServer_/), ktorý slúži na autentizáciu do programu. Jedná sa o zakódovaný reťazec meno:heslo do Base64.
 
 `file_name = 'filename'`
 
-`sheet_name = "sheetname"`
+`sheet_name = 'SheetNumber'`  Poradové číslo listu v súbore, napr. Sheet1.
